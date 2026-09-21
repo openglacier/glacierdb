@@ -296,6 +296,12 @@ publish: ## Publish the current og-db snapshot to the public GitHub repository
 	fi; \
 	\
 	echo "==> GlacierDB version: $$GLACIERDB_VERSION"; \
+	if [ -f "$(PUBLIC_EXPORT)/README.md" ]; then \
+		echo "==> Updating version badge"; \
+		sed -i \
+			"s|VERSION_PLACEHOLDER|$$GLACIERDB_VERSION|g" \
+			"$(PUBLIC_EXPORT)/README.md"; \
+	fi; \
 	\
 	printf '%s\n' \
 		'/target/' \

@@ -14,11 +14,12 @@
 
 <p align="center">
 
-![Version](https://img.shields.io/badge/version-VERSION_PLACEHOLDER-blue)
-
-![Build](https://img.shields.io/badge/build-passing-brightgreen)
-
-![License](https://img.shields.io/badge/license-MIT-informational)
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
+[![Build](https://github.com/openglacier/glacierdb/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/openglacier/core/actions/workflows/build.yml)
+[![Tests](https://github.com/openglacier/glacierdb/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/openglacier/core/actions/workflows/tests.yml)
+[![Clippy](https://github.com/openglacier/glacierdb/actions/workflows/clippy.yml/badge.svg?branch=main)](https://github.com/openglacier/core/actions/workflows/clippy.yml)
+[![Audit](https://github.com/openglacier/glacierdb/actions/workflows/audit.yml/badge.svg?branch=main)](https://github.com/openglacier/core/actions/workflows/audit.yml)
+![Architectures](https://img.shields.io/badge/release_targets-19-informational)
 
 </p>
 
