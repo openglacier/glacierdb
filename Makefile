@@ -244,6 +244,7 @@ publish: ## Publish the current og-db snapshot to the public GitHub repository
 	\
 	echo "==> Copying selected GlacierDB files"; \
 	\
+	cp Cross.toml "$(PUBLIC_EXPORT)/"; \
 	cp Cargo.toml "$(PUBLIC_EXPORT)/"; \
 	\
 	if [ -f Cargo.lock ]; then \
