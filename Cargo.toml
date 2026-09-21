@@ -1,0 +1,27 @@
+[package]
+name = "glacierdb"
+version = "1.0.0"
+edition = "2021"
+description = "GlacierDB — database distribution of OpenGlacier"
+license = "MIT"
+
+[dependencies]
+og_core = {
+    package = "openglacier-core",
+    version = "1.0.0",
+    default-features = false,
+    features = [
+        "database",
+        "auth",
+        "events",
+        "cli-tui",
+    ],
+}
+
+[[bin]]
+name = "glacierdb"
+path = "src/bin/glacierdb.rs"
+
+[[bin]]
+name = "glaciercli"
+path = "src/bin/glaciercli.rs"
