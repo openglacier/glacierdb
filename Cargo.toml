@@ -1,6 +1,6 @@
 [package]
 name = "glacierdb"
-version = "1.0.0"
+version = "1.0.1"
 edition = "2021"
 description = "GlacierDB — database distribution of OpenGlacier"
 license = "MIT"
@@ -8,7 +8,7 @@ license = "MIT"
 [dependencies]
 og_core = {
     package = "openglacier-core",
-    version = "1.0.0",
+    version = "1.0.1",
     default-features = false,
     features = [
         "database",
