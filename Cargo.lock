@@ -635,7 +635,7 @@ dependencies = [
 
 [[package]]
 name = "glacierdb"
-version = "1.0.1"
+version = "1.0.2"
 dependencies = [
  "openglacier-core",
 ]
@@ -975,9 +975,9 @@ checksum = "c08d65885ee38876c4f86fa503fb49d7b507c2b62552df7c70b2fce627e06381"
 
 [[package]]
 name = "openglacier-core"
-version = "1.0.1"
+version = "1.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "fb29ad9cbd4d6f5e46d713acd3c75ae1a6ca1f428945d10f3dbe4458a9e92d3d"
+checksum = "cbf9b66039d3a65dd0e75577926a144fc0b027a5b2cf0e3933f7b0acd486edb5"
 dependencies = [
  "argon2",
  "chacha20poly1305",
