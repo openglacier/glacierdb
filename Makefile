@@ -119,6 +119,10 @@ clippy: ## Run Clippy
 audit: ## Audit dependencies using cargo-audit
 	cargo audit
 
+# Loops aligned on 64 bytes: performance no longer moves with unrelated
+# changes of code layout.
+ALIGN_RUSTFLAGS := -C llvm-args=-align-loops=64
+
 build: ## Build GlacierDB release binaries
 	@set -eu; \
 	variant_rustflags=""; \
@@ -141,7 +145,7 @@ build: ## Build GlacierDB release binaries
 			;; \
 	esac; \
 	\
-	build_rustflags="$${RUSTFLAGS:-}"; \
+	build_rustflags="$${RUSTFLAGS:+$$RUSTFLAGS }$(ALIGN_RUSTFLAGS)"; \
 	if [ -n "$$variant_rustflags" ]; then \
 		build_rustflags="$${build_rustflags:+$$build_rustflags }$$variant_rustflags"; \
 	fi; \
@@ -150,14 +154,8 @@ build: ## Build GlacierDB release binaries
 	echo "  features: $(FEATURES)"; \
 	echo "  variant : $(VARIANT)"; \
 	\
-	if [ -n "$$build_rustflags" ]; then \
-		echo "  rustflags: $$build_rustflags"; \
-		RUSTFLAGS="$$build_rustflags" \
-			cargo build --release --bins $(CARGO_FEATURE_FLAGS); \
-	else \
-		echo "  rustflags: <none>"; \
-		cargo build --release --bins $(CARGO_FEATURE_FLAGS); \
-	fi
+	echo "  rustflags: $$build_rustflags"; \
+	RUSTFLAGS="$$build_rustflags" cargo build --release --bins $(CARGO_FEATURE_FLAGS)
 
 package: build ## Create production runtime archive
 	rm -rf $(PACKAGE_DIR)
