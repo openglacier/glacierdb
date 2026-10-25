@@ -1,22 +1,24 @@
 [package]
 name = "glacierdb"
-version = "1.0.5"
+version = "2.0.0"
 edition = "2021"
 description = "GlacierDB — database distribution of OpenGlacier"
 license = "MIT"
 
+[features]
+# Same names as openglacier-core, forwarded to it (the Makefile passes them).
+default = ["database", "auth", "events", "cli-tui"]
+database = ["og_core/database"]
+auth = ["og_core/auth"]
+events = ["og_core/events"]
+cli-tui = ["og_core/cli-tui"]
+# Release profiles (Debian packages glacierdb-full, glacierdb-full-cuda); the
+# client alone (glacierdb-client-tui) is --no-default-features --features cli-tui.
+full = ["default", "og_core/full"]
+full-cuda = ["full", "og_core/full-cuda"]
+
 [dependencies]
-og_core = {
-    package = "openglacier-core",
-    version = "1.0.5",
-    default-features = false,
-    features = [
-        "database",
-        "auth",
-        "events",
-        "cli-tui",
-    ],
-}
+og_core = { package = "openglacier-core", version = "2.0.0", default-features = false }
 
 [[bin]]
 name = "glacierdb"

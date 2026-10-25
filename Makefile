@@ -304,7 +304,7 @@ publish: ## Publish the current og-db snapshot to the public GitHub repository
 	printf '%s\n' \
 		'/target/' \
 		'*.tar.gz' \
-		'*.txt' \
+		'/*.txt' \
 		'/data/' \
 		'/dist/' \
 		'/dist-package/' \
@@ -338,6 +338,13 @@ publish: ## Publish the current og-db snapshot to the public GitHub repository
 		-print \
 		| grep -q .; then \
 		echo "ERROR: file larger than 20 MB found in public export."; \
+		rm -rf "$(PUBLIC_EXPORT)"; \
+		exit 1; \
+	fi; \
+	\
+	if git -C "$(PUBLIC_EXPORT)" ls-files --others --ignored --exclude-standard -- src \
+		| grep .; then \
+		echo "ERROR: files of src/ above are ignored by the public .gitignore."; \
 		rm -rf "$(PUBLIC_EXPORT)"; \
 		exit 1; \
 	fi; \
