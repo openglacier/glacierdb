@@ -14,7 +14,7 @@
 
 <p align="center">
 
-![Version](https://img.shields.io/badge/version-2.0.0-blue)
+![Version](https://img.shields.io/badge/version-2.0.1-blue)
 [![Build](https://github.com/openglacier/glacierdb/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/openglacier/glacierdb/actions/workflows/build.yml)
 [![Tests](https://github.com/openglacier/glacierdb/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/openglacier/glacierdb/actions/workflows/tests.yml)
 [![Clippy](https://github.com/openglacier/glacierdb/actions/workflows/clippy.yml/badge.svg?branch=main)](https://github.com/openglacier/glacierdb/actions/workflows/clippy.yml)
@@ -81,6 +81,35 @@ It consumes the published `openglacier-core` crate.
 ---
 
 # Quick start
+
+## Debian and Ubuntu
+
+On Debian 12 (bookworm) or later, Ubuntu 22.04 (jammy) or later and Raspberry Pi OS 64-bit, for amd64 and arm64, glacierdb comes from the openglacier apt repository:
+
+```bash
+sudo apt install -y curl ca-certificates
+curl -fsSLo /tmp/openglacier-archive-keyring.deb https://repo.openglacier.org/openglacier-archive-keyring.deb
+sudo apt install /tmp/openglacier-archive-keyring.deb
+sudo apt update
+sudo apt install glacierdb
+```
+
+`openglacier-archive-keyring` installs the signing key of the repository (`/usr/share/keyrings/openglacier-archive-keyring.gpg`) and its apt source (`/etc/apt/sources.list.d/openglacier.sources`), and keeps the key up to date. The key's fingerprint is `9E6F B980 0022 3F0F 299B FE23 DC7F 6E62 4B08 5E78`: `gpg --show-keys /usr/share/keyrings/openglacier-archive-keyring.gpg` shows it.
+
+glacierdb runs at once as the `glacierdb.service` systemd service, enabled at boot:
+
+```text
+address:        127.0.0.1:7878
+storage:        glacier, /var/lib/glacierdb/data.glacier
+configuration:  /etc/glacierdb/glacierdb.env (then systemctl restart glacierdb)
+bootstrap:      admin password in /etc/glacierdb/bootstrap-password
+```
+
+GlacierCLI comes with it: run `glaciercli` to connect.
+
+`sudo apt install glacierdb-full` switches to the full profile (native import data worker). On amd64 the package holds an x86-64 build and an x86-64-v3 one, the latter used on CPUs with AVX2. Updates come with `apt upgrade`.
+
+---
 
 ## Docker
 

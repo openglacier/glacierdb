@@ -1,9 +1,12 @@
 [package]
 name = "glacierdb"
-version = "2.0.0"
+version = "2.0.1"
 edition = "2021"
 description = "GlacierDB — database distribution of OpenGlacier"
 license = "MIT"
+# Binaries only (GitHub releases, Debian packages): the glacierdb crate on crates.io
+# is the client driver (og-drivers/rust), which this server must never overwrite.
+publish = false
 
 [features]
 # Same names as openglacier-core, forwarded to it (the Makefile passes them).
@@ -12,13 +15,15 @@ database = ["og_core/database"]
 auth = ["og_core/auth"]
 events = ["og_core/events"]
 cli-tui = ["og_core/cli-tui"]
+# The native data worker, answered by `glacierdb data-worker` (in full).
+native-import = ["og_core/native-import"]
 # Release profiles (Debian packages glacierdb-full, glacierdb-full-cuda); the
 # client alone (glacierdb-client-tui) is --no-default-features --features cli-tui.
-full = ["default", "og_core/full"]
+full = ["default", "native-import", "og_core/full"]
 full-cuda = ["full", "og_core/full-cuda"]
 
 [dependencies]
-og_core = { package = "openglacier-core", version = "2.0.0", default-features = false }
+og_core = { package = "openglacier-core", version = "2.0.1", default-features = false }
 
 [[bin]]
 name = "glacierdb"
