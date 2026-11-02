@@ -1,6 +1,6 @@
 [package]
 name = "glacierdb"
-version = "2.0.1"
+version = "2.0.2"
 edition = "2021"
 description = "GlacierDB — database distribution of OpenGlacier"
 license = "MIT"
@@ -23,7 +23,7 @@ full = ["default", "native-import", "og_core/full"]
 full-cuda = ["full", "og_core/full-cuda"]
 
 [dependencies]
-og_core = { package = "openglacier-core", version = "2.0.1", default-features = false }
+og_core = { package = "openglacier-core", version = "2.0.2", default-features = false }
 
 [[bin]]
 name = "glacierdb"
