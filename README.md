@@ -14,7 +14,7 @@
 
 <p align="center">
 
-![Version](https://img.shields.io/badge/version-2.0.4-blue)
+![Version](https://img.shields.io/badge/version-2.0.5-blue)
 [![Build](https://github.com/openglacier/glacierdb/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/openglacier/glacierdb/actions/workflows/build.yml)
 [![Tests](https://github.com/openglacier/glacierdb/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/openglacier/glacierdb/actions/workflows/tests.yml)
 [![Clippy](https://github.com/openglacier/glacierdb/actions/workflows/clippy.yml/badge.svg?branch=main)](https://github.com/openglacier/glacierdb/actions/workflows/clippy.yml)
